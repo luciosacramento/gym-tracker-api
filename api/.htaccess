@@ -1,0 +1,14 @@
+<IfModule mod_headers.c>
+  # Define uma única vez (só se ainda não existir)
+  Header always setifempty Access-Control-Allow-Origin "*"
+  Header always setifempty Access-Control-Allow-Methods "GET, POST, OPTIONS"
+  Header always setifempty Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+  Header always setifempty Access-Control-Max-Age "86400"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Responde preflight sem passar pro PHP
+  RewriteCond %{REQUEST_METHOD} =OPTIONS
+  RewriteRule ^ - [R=204,L]
+</IfModule>

@@ -1,0 +1,9 @@
+{
+  "name": "gym-tracker/backend-php",
+  "description": "PHP backend for Gym Tracker",
+  "require": {
+    "php": ">=8.1",
+    "ext-pdo": "*",
+    "phpoffice/phpspreadsheet": "^2.1"
+  }
+}
