@@ -1,5 +1,20 @@
 <?php
 
+$allowed = [
+  'http://localhost:4200',
+  'https://gym-tracker-7yggg7k3m-luciosacramentos-projects.vercel.app'
+];
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed)) {
+    header("Access-Control-Allow-Origin: ".$_SERVER['HTTP_ORIGIN']);
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+}
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 // -------- Timezone --------
 date_default_timezone_set('America/Bahia');
 
