@@ -1,5 +1,5 @@
 <IfModule mod_headers.c>
-  Header always set Access-Control-Allow-Origin "https://gym-tracker-7yggg7k3m-luciosacramentos-projects.vercel.app"
+  Header always set Access-Control-Allow-Origin "*"
   Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
   Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
   Header always set Access-Control-Max-Age "86400"
