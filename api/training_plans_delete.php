@@ -1,6 +1,11 @@
 <?php
 require __DIR__.'/config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
+
+// responder o preflight CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204); // No Content
+    exit;
+}
 
 $body = json_decode(file_get_contents('php://input'), true);
 $planId = isset($body['planId']) ? (int)$body['planId'] : 0;

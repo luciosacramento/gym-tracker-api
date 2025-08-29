@@ -4,7 +4,12 @@ require __DIR__.'/../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
+// Responde corretamente o preflight CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204); // sem conteúdo
+    exit;
+}
+
 if (empty($_FILES['file'])) { http_response_code(400); echo json_encode(array('message'=>'Arquivo não enviado')); exit; }
 
 try {

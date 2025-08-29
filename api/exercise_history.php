@@ -1,6 +1,11 @@
 <?php
 require __DIR__.'/config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
+
+// responder o preflight CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204); // No Content
+    exit;
+}
 
 $exerciseId = isset($_GET['exerciseId']) ? (int)$_GET['exerciseId'] : 0;
 if ($exerciseId <= 0) { http_response_code(400); echo json_encode(array('message'=>'exerciseId inválido')); exit; }

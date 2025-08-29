@@ -1,6 +1,11 @@
 <?php
 require __DIR__.'/config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
+
+// responder o preflight CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204); // No Content
+    exit;
+}
 
 try {
   $dowJs = (int)date('w'); // 0=Dom .. 6=Sáb
